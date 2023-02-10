@@ -1,6 +1,8 @@
 :root {
     --blue: rgb(26, 185, 238);
     --gray: rgb(57, 78, 85);
+    --card-radius: 5px;
+    --card-shadow: 3px 3px 3px rgb(175, 175, 175);
 }
 
 * {
@@ -15,8 +17,15 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 200px 3fr;
+    grid-template-columns: 210px 3fr;
     grid-template-rows: auto 3fr;
+}
+
+.search {
+    background-color: rgb(203, 201, 201);
+    border-radius: 15px;
+    padding: 5px;
+    grid-area: 1/2/2/3;
 }
 
 .header {
@@ -68,7 +77,7 @@ body {
 }
 
 .sidebar ul {
-    align-items: center;
+    /* align-items: center; */
     /* Trying to get sidebar text to be center aligned with accompanying images */
 }
 
@@ -85,10 +94,18 @@ body {
     font-size: 18px;
 }
 
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+    
+.grow:hover { 
+    transform: scale(1.02); 
+}
+
 .content {
     display: grid;
     grid-area: 2/2/-1/-1;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 250px;
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
     padding: 10px;
@@ -98,29 +115,52 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-area: 1/1/-1/2;
-    gap: 10px;
+    gap: 15px;
 }
 
 .card {
-    background-color: whitesmoke;
-    border: 1px solid black;
+    background-color: white;
+    border-left: 5px solid orange;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
     max-height: ;
 }
 
-.card .title {
+.title {
     font-size: 18px;
+    font-weight: bold;
     text-align: center;
 }
 
 .announcements {
-    background-color: green;
+    display: grid;
+    /* max-height: 390px; */
+    grid-template-rows: repeat(3, 1fr);
     grid-area: 1/2/2/-1;
 }
 
 .trending {
-    background-color: yellow;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
     grid-area: 2/2/3/-1;
+}
 
+.announcements, .trending {
+    background-color: white;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: 10px;
+}
+
+.footer {
+    background-color: var(--gray);
+    color: white;
+    grid-area: -1/1/-1/-1;
+    text-align: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
 }
